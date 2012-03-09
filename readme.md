@@ -3,7 +3,7 @@ fountain-js
 
 fountain-js is a JavaScript based parser for the screenplay format [Fountain](http://fountain.io/).
 
-You can [try fountain-js out](http://mattdaly.github.com/fountain-js/). The file system currently uses the HTML 5 File API, which means not all browsers support it, you'll be told if yours doesn't - I'm working on compatiblity. CSS styling isn't complete, so some elements aren't placed correctly and the text spacing might not be quite right, and, as you'll see, individual pages aren't currently supported either.
+You can [try fountain-js out](http://mattdaly.github.com/Fountain.js/). The file system currently uses the HTML 5 File API, which means not all browsers support it, you'll be told if yours doesn't - I'm working on compatiblity. CSS styling isn't complete, so some elements aren't placed correctly and the text spacing might not be quite right, and, as you'll see, individual pages aren't currently supported either.
 
 # Syntax Support
 
@@ -14,7 +14,7 @@ As of version 0.1.0 all Fountain syntax is supported, with the following excepti
 
 Both notes and boneyards work if they are defined on a line by themselves, but neither are parsed inline until I find a suitable way to span each across the generated html elements, without leaving elements unintientionally open.
 
-Currently foutain-js supports a limited range of key-value pairs for title pages - 
+Currently fountain-js supports a limited range of key-value pairs for title pages - 
 
 * Title, Credit, Author/s, Source, Notes, Draft date, Date, Contact, Copyright
 

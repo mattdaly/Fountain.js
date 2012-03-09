@@ -219,7 +219,7 @@
         case 'scene_heading': html.push('<h3>' + token.text + '</h3>'); break;
         case 'transition': html.push('<h2>' + token.text + '</h2>'); break;
 
-        case 'dialogue_begin': html.push('<div class=\"dialogue' + (token.dual ? 'dual-dialogue' : '') +'\">'); break;
+        case 'dialogue_begin': html.push('<div class=\"dialogue' + (token.dual ? ' dual-dialogue right' : '') +'\">'); break;
         case 'character': html.push('<h4>' + token.text + '</h4>'); break;
         case 'parenthetical': html.push('<p class=\"parenthetical\">' + token.text + '</p>'); break;
         case 'dialogue': html.push('<p>' + token.text + '</p>'); break;
