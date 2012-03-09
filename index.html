@@ -1,85 +1,68 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset='utf-8'>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Fountain.js - A Fountain screenplay parser</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fountain.js is a JavaScript parser for the screenplay format Fountain.">
+    <meta name="author" content="Matthew Daly">
 
-  <title>mattdaly/fountain-js @ GitHub</title>
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
-  <style type="text/css">
-    body {
-      margin-top: 1.0em;
-      background-color: #4e6fbb;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #ffffff;
-    }
-    #container {
-      margin: 0 auto;
-      width: 700px;
-    }
-    h1 { font-size: 3.8em; color: #b19044; margin-bottom: 3px; }
-    h1 .small { font-size: 0.4em; }
-    h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #b19044; }
-    h3 { text-align: center; color: #b19044; }
-    a { color: #b19044; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-    pre { background: #000; color: #fff; padding: 15px;}
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; font-style: italic; }
-  </style>
-</head>
+    <link href="assets/css/normalize.min.css" rel="stylesheet">
+    <link href="assets/css/fountain-js.css" rel="stylesheet">
 
-<body>
-  <a href="https://github.com/mattdaly/fountain-js"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+    <link rel="shortcut icon" href="assets/icons/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  </head>
 
-  <div id="container">
+  <body id="fountain-js">
+    <section id="dock">
+      <header>
+        <div class="container">
+          <h1>Fountain.js</h1>
+        </div>
+      </header>      
 
-    <div class="download">
-      <a href="https://github.com/mattdaly/fountain-js/zipball/master">
-        <img border="0" width="90" src="https://github.com/images/modules/download/zip.png"></a>
-      <a href="https://github.com/mattdaly/fountain-js/tarball/master">
-        <img border="0" width="90" src="https://github.com/images/modules/download/tar.png"></a>
-    </div>
+      <section class="container">
+        <blockquote>"Fountain allows you to write screenplays in any text editor on any device. Because it's just text, it's portable and future-proof."</blockquote>
+        <p class="more-information">For more information on Fountain, visit <a href="http://fountain.io/">Fountain.io</a></p>
 
-    <h1><a href="https://github.com/mattdaly/fountain-js">fountain-js</a>
-      <span class="small">by <a href="https://github.com/mattdaly">mattdaly</a></span></h1>
+        <div id="file-api">
+            <p>To parse a Fountain document simply drag it into this box and Fountain.js will take care of the rest.</p>
+        </div>
+      </section>
+    </section>
 
-    <div class="description">
-      A JavaScript parser for the screenplay format Fountain
-    </div>
+    <section id="workspace">
+      <header>
+        <div class="container">
+          <ul id="inspector">
+            <li></li>
+          </ul>
 
-    
+          <p id="script-title"></p>
 
-    
+          <ul id="toolbar">
+            <li class="resize"><a data-tooltip="Resize Script">Resize Script</a></li>
+            <li class="dim"><a data-tooltip="Toggle Header">Toggle Header</a></li>
+            <li class="dock"><a data-tooltip="Return To Dock">Return To Dock</a></li>
+          </ul>
+        </div>
+      </header>
 
-    
+      <div id="script"></div>
+    </section>
 
-    
-
-    
-      <h2>Authors</h2>
-      <p>Matt Daly (matt@matthew-daly.com)<br/>      </p>
-    
-
-    
-
-    <h2>Download</h2>
-    <p>
-      You can download this project in either
-      <a href="https://github.com/mattdaly/fountain-js/zipball/master">zip</a> or
-      <a href="https://github.com/mattdaly/fountain-js/tarball/master">tar formats.
-    </p>
-    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
-      by running:
-      <pre>$ git clone git://github.com/mattdaly/fountain-js</pre>
-    </p>
-
-    <div class="footer">
-      get the source code on GitHub : <a href="https://github.com/mattdaly/fountain-js">mattdaly/fountain-js</a>
-    </div>
-
-  </div>
-
-</body>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      if (typeof jQuery == 'undefined') {
+        document.write(unescape("%3Cscript src='assets/js/jquery-1.7.1.min.js' type='text/javascript'%3E%3C/script%3E"));
+      }
+    </script>
+    <script type="text/javascript" src="assets/js/fountain.min.js"></script>
+    <script type="text/javascript" src="assets/js/fountain-reader.js"></script>
+  </body>
 </html>
