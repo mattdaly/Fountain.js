@@ -51,7 +51,7 @@
      
   var tokenize = function (script) {
     var src    = lexer(script).split(regex.splitter)
-      , i      = src.length, line, match, parts, text, meta, x, xlen
+      , i      = src.length, line, match, parts, text, meta, x, xlen, dual
       , tokens = [];
 
     while (i--) {
@@ -109,9 +109,10 @@
               tokens.push({ type: regex.parenthetical.test(text) ? 'parenthetical' : 'dialogue', text: text });
             }
           }
-
+          meta = match[2] ? 'right' : dual ? 'left' : undefined;
           tokens.push({ type: 'character', text: match[1].trim() });
-          tokens.push({ type: 'dialogue_begin', dual: match[2] ? true : undefined  });
+          tokens.push({ type: 'dialogue_begin', dual: meta });
+          dual = match[2] ? true : false;
           continue;
         }
       }
@@ -219,7 +220,7 @@
         case 'scene_heading': html.push('<h3>' + token.text + '</h3>'); break;
         case 'transition': html.push('<h2>' + token.text + '</h2>'); break;
 
-        case 'dialogue_begin': html.push('<div class=\"dialogue' + (token.dual ? ' dual-dialogue right' : '') +'\">'); break;
+        case 'dialogue_begin': html.push('<div class=\"dialogue' + (token.dual ? ' ' + token.dual : '') + '\">'); break;
         case 'character': html.push('<h4>' + token.text + '</h4>'); break;
         case 'parenthetical': html.push('<p class=\"parenthetical\">' + token.text + '</p>'); break;
         case 'dialogue': html.push('<p>' + token.text + '</p>'); break;
