@@ -292,7 +292,7 @@ header::-moz-selection, header::selection { background: #454545; color: #fff; }
 #workspace #script .page div.dual-dialogue { margin: 0 auto; width: 96%; }
 #workspace #script .page div.dual-dialogue div.dialogue { display: inline-block; margin: 0; width: 45%; }
 #workspace #script .page div.dual-dialogue div.dialogue h4 { margin-top: 0;}
-#workspace #script .page div.dual-dialogue div.dialogue.dual { float: right; }
+#workspace #script .page div.dual-dialogue.right div.dialogue { float: right; }
 
 #workspace #script .page p { }
 #workspace #script .page p.centered { text-align: center; width: 92.5%; }
