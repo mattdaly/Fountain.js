@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Fountain.js - A Fountain screenplay parser</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fountain.js is a JavaScript parser for the screenplay format Fountain.">
+    <meta name="author" content="Matthew Daly">
+
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link href="assets/css/normalize.min.css" rel="stylesheet">
+    <link href="assets/css/fountain-js.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="assets/icons/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  </head>
+
+  <body id="fountain-js">
+    <section id="dock">
+      <header>
+        <div class="container">
+          <h1>Fountain.js</h1>
+        </div>
+      </header>      
+
+      <section class="container">
+        <blockquote>"Fountain allows you to write screenplays in any text editor on any device. Because it's just text, it's portable and future-proof."</blockquote>
+        <p class="more-information">For more information on Fountain, visit <a href="http://fountain.io/">Fountain.io</a></p>
+
+        <div id="file-api">
+            <p>To parse a Fountain document simply drag it into this box and Fountain.js will take care of the rest.</p>
+        </div>
+      </section>
+    </section>
+
+    <section id="workspace">
+      <header>
+        <div class="container">
+          <ul id="inspector">
+            <li></li>
+          </ul>
+
+          <p id="script-title"></p>
+
+          <ul id="toolbar">
+            <li class="resize"><a data-tooltip="Resize Script">Resize Script</a></li>
+            <li class="dim"><a data-tooltip="Toggle Header">Toggle Header</a></li>
+            <li class="dock"><a data-tooltip="Return To Dock">Return To Dock</a></li>
+          </ul>
+        </div>
+      </header>
+
+      <div id="script"></div>
+    </section>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      if (typeof jQuery == 'undefined') {
+        document.write(unescape("%3Cscript src='assets/js/jquery-1.7.1.min.js' type='text/javascript'%3E%3C/script%3E"));
+      }
+    </script>
+    <script type="text/javascript" src="assets/js/fountain.min.js"></script>
+    <script type="text/javascript" src="assets/js/fountain-reader.js"></script>
+  </body>
+</html>
