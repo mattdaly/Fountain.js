@@ -1,4 +1,4 @@
-// fountain-js 0.1.0
+// fountain-js 0.1.5
 // http://www.opensource.org/licenses/mit-license.php
 // Copyright (c) 2012 Matt Daly
 
@@ -6,7 +6,7 @@
   'use strict';
 
   var regex = {
-    title_page: /^((?:title|credit|author[s]?|source|botes|draft date|date|contact|copyright)\:)/gim,
+    title_page: /^((?:title|credit|author[s]?|source|notes|draft date|date|contact|copyright)\:)/gim,
 
     scene_heading: /^((?:(?:int|ext|est|i\/e)[. ]).+)|^(?:\.)(.+)/i,
     scene_number: /( *#(.+)# *)/,
