@@ -288,8 +288,11 @@ header::-moz-selection, header::selection { background: #454545; color: #fff; }
 #workspace #script .page div.dialogue h4 { margin-bottom: 0; margin-left: 30%; }
 #workspace #script .page div.dialogue p.parenthetical { margin-bottom: 0; margin-top: 0; margin-left: 14%;}
 #workspace #script .page div.dialogue p { margin-bottom: 0; margin-top: 0; }
-#workspace #script .page div.dialogue.left { margin-left: 3%; width: 46%; }
-#workspace #script .page div.dialogue.right { margin-left: 53%; width: 46%; }
+
+#workspace #script .page div.dual-dialogue { margin: 0 0 0.9em 2%; auto; width: 95%; }
+#workspace #script .page div.dual-dialogue div.dialogue { display: inline-block; margin: 0; width: 45%; }
+#workspace #script .page div.dual-dialogue div.dialogue h4 { margin-top: 0;}
+#workspace #script .page div.dual-dialogue div.dialogue.right { float: right; }
 
 #workspace #script .page p { }
 #workspace #script .page p.centered { text-align: center; width: 92.5%; }
