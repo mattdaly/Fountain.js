@@ -6,7 +6,7 @@
   'use strict';
 
   var regex = {
-    title_page: /^((?:Title|Credit|Author[s]?|Source|Notes|Draft date|Date|Contact|Copyright)\:)/gm,
+    title_page: /^((?:title|credit|author[s]?|source|botes|draft date|date|contact|copyright)\:)/gim,
 
     scene_heading: /^((?:(?:int|ext|est|i\/e)[. ]).+)|^(?:\.)(.+)/i,
     scene_number: /( *#(.+)# *)/,
@@ -97,6 +97,10 @@
       if (match = line.match(regex.dialogue)) {
         if (match[1].indexOf('  ') !== match[1].length - 2) {
           // we're iterating from the bottom up, so we need to push these backwards
+          if (match[2]) {
+            tokens.push({ type: 'dual_dialogue_end' });
+          }
+
           tokens.push({ type: 'dialogue_end' });
 
           parts = match[3].split('\n').reverse();
@@ -109,9 +113,14 @@
               tokens.push({ type: regex.parenthetical.test(text) ? 'parenthetical' : 'dialogue', text: text });
             }
           }
-          meta = match[2] ? 'right' : dual ? 'left' : undefined;
+
           tokens.push({ type: 'character', text: match[1].trim() });
-          tokens.push({ type: 'dialogue_begin', dual: meta });
+          tokens.push({ type: 'dialogue_begin', dual: match[2] ? 'right' : dual ? 'left' : undefined });
+
+          if (dual) {
+            tokens.push({ type: 'dual_dialogue_begin' });
+          }
+
           dual = match[2] ? true : false;
           continue;
         }
@@ -155,7 +164,7 @@
 
       tokens.push({ type: 'action', text: line });
     }
-   
+
     return tokens;
   };
 
@@ -220,11 +229,13 @@
         case 'scene_heading': html.push('<h3>' + token.text + '</h3>'); break;
         case 'transition': html.push('<h2>' + token.text + '</h2>'); break;
 
+        case 'dual_dialogue_begin': html.push('<div class=\"dual-dialogue\">'); break;
         case 'dialogue_begin': html.push('<div class=\"dialogue' + (token.dual ? ' ' + token.dual : '') + '\">'); break;
         case 'character': html.push('<h4>' + token.text + '</h4>'); break;
         case 'parenthetical': html.push('<p class=\"parenthetical\">' + token.text + '</p>'); break;
         case 'dialogue': html.push('<p>' + token.text + '</p>'); break;
         case 'dialogue_end': html.push('</div> '); break;
+        case 'dual_dialogue_end': html.push('</div> '); break;
 
         case 'section': html.push('<p class=\"section\" data-depth=\"' + token.depth + '\">' + token.text + '</p>'); break;
         case 'synopsis': html.push('<p class=\"synopsis\">' + token.text + '</p>'); break;
