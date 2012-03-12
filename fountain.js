@@ -1,4 +1,4 @@
-// fountain-js 0.1.8
+// fountain-js 0.1.8.1
 // http://www.opensource.org/licenses/mit-license.php
 // Copyright (c) 2012 Matt Daly
 
@@ -170,7 +170,7 @@
   };
 
   var inline = {
-    comment: '<!-- $1 -->',
+    note: '<!-- $1 -->',
 
     line_break: '<br />',
 
