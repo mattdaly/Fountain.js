@@ -1,4 +1,4 @@
-// fountain-js 0.1.5
+// fountain-js 0.1.7
 // http://www.opensource.org/licenses/mit-license.php
 // Copyright (c) 2012 Matt Daly
 
@@ -28,6 +28,7 @@
     page_break: /^\={3,}$/,
     line_break: /^ {2}$/,
 
+    emphasis: /(_?\*{1}(?=.+\*{0,2}_?)|\*{1}_{1}(?=.+_?\*{0,2}))(.+?)(\*{1,3}_?|_?\*{1,3})/g,
     bold_italic_underline: /(_{1}\*{3}(?=.+\*{3}_{1})|\*{3}_{1}(?=.+_{1}\*{3}))(.+?)(\*{3}_{1}|_{1}\*{3})/g,
     bold_underline: /(_{1}\*{2}(?=.+\*{2}_{1})|\*{2}_{1}(?=.+_{1}\*{2}))(.+?)(\*{2}_{1}|_{1}\*{2})/g,
     italic_underline: /(?:_{1}\*{1}(?=.+\*{1}_{1})|\*{1}_{1}(?=.+_{1}\*{1}))(.+?)(\*{1}_{1}|_{1}\*{1})/g,
@@ -103,13 +104,12 @@
 
           tokens.push({ type: 'dialogue_end' });
 
-          parts = match[3].split('\n').reverse();
+          parts = match[3].split(/(\(.+\))(?:\n+)/).reverse();
+
           for (x = 0, xlen = parts.length; x < xlen; x++) {	
             text = parts[x];
 
-            if (regex.line_break.test(text)) {
-              tokens.push({ type: 'line_break' });
-            } else {
+            if (text.length > 0) {
               tokens.push({ type: regex.parenthetical.test(text) ? 'parenthetical' : 'dialogue', text: text });
             }
           }
@@ -188,16 +188,20 @@
     var styles = [ 'underline', 'italic', 'bold', 'bold_italic', 'italic_underline', 'bold_underline', 'bold_italic_underline' ]
            , i = styles.length, style, match;
 
-    while (i--) {
-      style = styles[i];
-      match = regex[style];
+    s = s.replace(/\n/g, inline.line_break);
 
-      if (match.test(s)) {
-        s = s.replace(match, inline[style]);
+    if (regex.emphasis.test(s)) {
+      while (i--) {
+        style = styles[i];
+        match = regex[style];
+
+        if (match.test(s)) {
+          s = s.replace(match, inline[style]);
+        }
       }
     }
 
-    return s.replace(/\n/g, inline.line_break).trim();
+    return s.trim();
   };
 
   var parse = function (script, toks, callback) {
