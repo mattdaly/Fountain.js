@@ -7,12 +7,7 @@ You can [try fountain-js out](http://mattdaly.github.com/Fountain.js/). The file
 
 # Syntax Support
 
-As of version 0.1.0 all Fountain syntax is supported, with the following exceptions -
-
-* Inline Notes (double bracket comments)
-* Inline Boneyards
-
-Both notes and boneyards work if they are defined on a line by themselves, but neither are parsed inline until I find a suitable way to span each across the generated html elements, without leaving elements unintientionally open.
+As of version 0.1.8 the full Fountain syntax is supported.
 
 Currently fountain-js supports a limited range of key-value pairs for title pages - 
 

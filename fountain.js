@@ -1,4 +1,4 @@
-// fountain-js 0.1.7
+// fountain-js 0.1.8
 // http://www.opensource.org/licenses/mit-license.php
 // Copyright (c) 2012 Matt Daly
 
@@ -23,7 +23,8 @@
     synopsis: /^(?:\=(?!\=+) *)(.*)/,
 
     note: /^(?:\[{2}(?!\[+))(.+)(?:\]{2}(?!\[+))$/,
-    boneyard: /(^\/\*|^\*\/)$/gm,
+    note_inline: /(?:\[{2}(?!\[+))([\s\S]+?)(?:\]{2}(?!\[+))/g,
+    boneyard: /(^\/\*|^\*\/)$/g,
 
     page_break: /^\={3,}$/,
     line_break: /^ {2}$/,
@@ -169,6 +170,8 @@
   };
 
   var inline = {
+    comment: '<!-- $1 -->',
+
     line_break: '<br />',
 
     bold_italic_underline: '<span class=\"bold italic underline\">$2</span>',
@@ -188,7 +191,7 @@
     var styles = [ 'underline', 'italic', 'bold', 'bold_italic', 'italic_underline', 'bold_underline', 'bold_italic_underline' ]
            , i = styles.length, style, match;
 
-    s = s.replace(/\n/g, inline.line_break);
+    s = s.replace(regex.note_inline, inline.note).replace(/\n/g, inline.line_break);
 
     if (regex.emphasis.test(s)) {
       while (i--) {
