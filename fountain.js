@@ -1,4 +1,4 @@
-// fountain-js 0.1.9
+// fountain-js 0.1.10
 // http://www.opensource.org/licenses/mit-license.php
 // Copyright (c) 2012 Matt Daly
 
@@ -191,7 +191,7 @@
     var styles = [ 'underline', 'italic', 'bold', 'bold_italic', 'italic_underline', 'bold_underline', 'bold_italic_underline' ]
            , i = styles.length, style, match;
 
-    s = s.replace(regex.note_inline, inline.note).replace(/\n/g, inline.line_break);
+    s = s.replace(regex.note_inline, inline.note).replace(/\\\*/g, '[star]').replace(/\\_/g, '[underline]').replace(/\n/g, inline.line_break);
 
    // if (regex.emphasis.test(s)) {                         // this was causing only every other occurence of an emphasis syntax to be parsed
       while (i--) {
@@ -204,7 +204,7 @@
       }
    // }
 
-    return s.trim();
+    return s.replace(/\[star\]/g, '*').replace(/\[underline\]/g, '_').trim();
   };
 
   var parse = function (script, toks, callback) {
