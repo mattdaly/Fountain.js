@@ -189,7 +189,7 @@ header::-moz-selection, header::selection { background: #454545; color: #fff; }
     border-radius: 2px;
     color: #222;
     cursor: text;
-    font: 12px/14px Courier,"Courier New",monospace;
+    font: Courier,"Courier New",monospace;
     letter-spacing: 0 !important;
     font-family: 'Courier Final Draft', Courier, Courier New, monospace;
     line-height: 107.5%;
@@ -220,7 +220,7 @@ header::-moz-selection, header::selection { background: #454545; color: #fff; }
 #workspace #script.dpi100 .page h2,
 #workspace #script.dpi100 .page h3,
 #workspace #script.dpi100 .page h4,
-#workspace #script.dpi100 .page p { font-size: 16px; font-weight: normal; }
+#workspace #script.dpi100 .page p { font-size: 17px; font-weight: normal; }
 
 #workspace #script.dpi150 .page h1,
 #workspace #script.dpi150 .page h2,
@@ -284,12 +284,12 @@ header::-moz-selection, header::selection { background: #454545; color: #fff; }
 #workspace #script .page h3:before { content: attr(id); font-weight: bold; left: -35px; position: absolute; }
 #workspace #script .page h3:after { content: attr(id); font-weight: bold; right: -35px; position: absolute; }
 
-#workspace #script .page div.dialogue { margin-left: 17%; width: 74%; }
-#workspace #script .page div.dialogue h4 { margin-bottom: 0; margin-left: 26%; }
-#workspace #script .page div.dialogue p.parenthetical { margin-bottom: 0; margin-top: 0; margin-left: 14%;}
+#workspace #script .page div.dialogue { margin-left: auto; margin-right: auto; width: 68%; }
+#workspace #script .page div.dialogue h4 { margin-bottom: 0; margin-left: 23%; }
+#workspace #script .page div.dialogue p.parenthetical { margin-bottom: 0; margin-top: 0; margin-left: 11%;}
 #workspace #script .page div.dialogue p { margin-bottom: 0; margin-top: 0; }
 
-#workspace #script .page div.dual-dialogue { margin: 0 0 0.9em 2%; auto; width: 95%; }
+#workspace #script .page div.dual-dialogue { margin: 2em 0 0.9em 2%; auto; width: 95%; }
 #workspace #script .page div.dual-dialogue div.dialogue { display: inline-block; margin: 0; width: 45%; }
 #workspace #script .page div.dual-dialogue div.dialogue h4 { margin-top: 0;}
 #workspace #script .page div.dual-dialogue div.dialogue.right { float: right; }
@@ -299,6 +299,6 @@ header::-moz-selection, header::selection { background: #454545; color: #fff; }
 
 #workspace #script .page p.section { color: #bbb; margin-left: -30px; }
 
-#workspace #script .page p span.italic { font-style: italic; }
-#workspace #script .page p span.bold { font-weight: bold; }
-#workspace #script .page p span.underline { text-decoration: underline; 
+#workspace #script .page span.italic { font-style: italic; }
+#workspace #script .page span.bold { font-weight: bold; }
+#workspace #script .page span.underline { text-decoration: underline; 
