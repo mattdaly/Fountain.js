@@ -281,8 +281,8 @@ header::-moz-selection, header::selection { background: #454545; color: #fff; }
 #workspace #script .page h2 { text-align: right; }
 #workspace #script .page h2.left-aligned { text-align: left }
 #workspace #script .page h3 { position: relative; }
-#workspace #script .page h3:before { content: attr(id); font-weight: bold; left: -35px; position: absolute; }
-#workspace #script .page h3:after { content: attr(id); font-weight: bold; right: -35px; position: absolute; }
+#workspace #script .page h3:before { color: #bbb; content: attr(id); font-weight: bold; left: -45px; position: absolute; }
+#workspace #script .page h3:after { color: #bbb; content: attr(id); font-weight: bold; right: -45px; position: absolute; }
 
 #workspace #script .page div.dialogue { margin-left: auto; margin-right: auto; width: 68%; }
 #workspace #script .page div.dialogue h4 { margin-bottom: 0; margin-left: 23%; }
@@ -298,6 +298,7 @@ header::-moz-selection, header::selection { background: #454545; color: #fff; }
 #workspace #script .page p.centered { text-align: center; width: 92.5%; }
 
 #workspace #script .page p.section { color: #bbb; margin-left: -30px; }
+#workspace #script .page p.synopsis { color: #bbb; margin-left: -20px; }
 
 #workspace #script .page span.italic { font-style: italic; }
 #workspace #script .page span.bold { font-weight: bold; }
