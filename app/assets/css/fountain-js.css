@@ -289,7 +289,7 @@ header::-moz-selection, header::selection { background: #454545; color: #fff; }
 #workspace #script .page div.dialogue p.parenthetical { margin-bottom: 0; margin-top: 0; margin-left: 11%;}
 #workspace #script .page div.dialogue p { margin-bottom: 0; margin-top: 0; }
 
-#workspace #script .page div.dual-dialogue { margin: 2em 0 0.9em 2%; auto; width: 95%; }
+#workspace #script .page div.dual-dialogue { margin: 2em 0 0.9em 2%; width: 95%; }
 #workspace #script .page div.dual-dialogue div.dialogue { display: inline-block; margin: 0; width: 45%; }
 #workspace #script .page div.dual-dialogue div.dialogue h4 { margin-top: 0;}
 #workspace #script .page div.dual-dialogue div.dialogue.right { float: right; }
