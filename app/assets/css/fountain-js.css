@@ -302,4 +302,4 @@ header::-moz-selection, header::selection { background: #454545; color: #fff; }
 
 #workspace #script .page span.italic { font-style: italic; }
 #workspace #script .page span.bold { font-weight: bold; }
-#workspace #script .page span.underline { text-decoration: underline; 
+#workspace #script .page span.underline { text-decoration: underline;}
