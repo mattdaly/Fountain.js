@@ -211,10 +211,11 @@
 	if (typeof maybeArray == 'undefined') {
 	  maybeArray = []
 	}
-    
+
 	if (Array.isArray(maybeArray)) {
 	  maybeArray.push(stuffToPush);
 	} else {
+      console.trace();
 	  throw "First parameter to this function must be a proper array. Instead got: " + JSON.stringify(maybeArray);
 	}
 
@@ -284,7 +285,7 @@
 
         case 'transition':
           //push the current running scene onto the list, and begin a new one
-          scene.dialogue = pushToArray(token.text, {type: "transition", text: token.text});
+          scene.dialogue = pushToArray(scene.dialogue, {type: "transition", text: token.text});
           break;
 
 
