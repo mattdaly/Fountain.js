@@ -221,7 +221,7 @@
 	return maybeArray;
   }
 
-  var parse = function (script, toks, callback) {
+  var parseToJson = function (script, toks, callback) {
 	if (callback === undefined && typeof toks === 'function') {
 	  callback = toks;
 	  toks = undefined;
