@@ -211,7 +211,7 @@
 	if (typeof maybeArray == 'undefined') {
 	  maybeArray = []
 	}
-
+    
 	if (Array.isArray(maybeArray)) {
 	  maybeArray.push(stuffToPush);
 	} else {
@@ -418,12 +418,12 @@
   };
 
   var fountain = function (script, callback) {
-	return fountain.parse(script, callback);
+	return fountain.parseToJson(script, callback);
   };
 
-  fountain.parse = function (script, tokens, callback) {
-	return parse(script, tokens, callback);
-  };
+  fountain.parseToJson = parseToJson;
+
+  fountain.parseToHtml = parseToHtml;
 
   if (typeof module !== 'undefined') {
 	module.exports = fountain;
