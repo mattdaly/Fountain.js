@@ -237,9 +237,9 @@
 
 	output.tokens = toks ? tokens.reverse() : undefined;
 
-	var scene = {}; //the current running scene
-    var dialogue = {}; //the current running dialogue
-    var character = {}; //the current running character
+	var scene = []; //the current running scene
+    var dialogue = {type: "unknown"}; //the current running dialogue
+    var character = {type: "unknown"}; //the current running character
 
 	while (i--) {
 	  token = tokens[i];
@@ -278,51 +278,51 @@
 
 		case 'scene_heading':
           output.script.scenes = pushToArray(output.script.scenes, scene);
-          scene = {};
-          scene.headings = pushToArray(scene.heading,
-              {"scene_number": token.scene_number, "heading": token.text});
+          scene = [];
+          scene = pushToArray(scene,
+              {type: "heading", "scene_number": token.scene_number, "heading": token.text});
           break;
 
         case 'transition':
           //push the current running scene onto the list, and begin a new one
-          scene.dialogue = pushToArray(scene.dialogue, {type: "transition", text: token.text});
+          scene = pushToArray(scene, {type: "transition", text: token.text});
           break;
 
 
         case 'dual_dialogue_begin':
           dialogue.characters = pushToArray(dialogue.characters, character);
-          scene.dialogue = pushToArray(scene.dialog, dialogue);
-            dialogue = {type: "dual"};
+			character = {type: "unkown"};
+          scene = pushToArray(scene, dialogue);
+            dialogue = {type: "dialogue-dual"};
 		  break;
 		case 'dialogue_begin':
           dialogue.characters = pushToArray(dialogue.characters, character);
-          scene.dialogue = pushToArray(scene.dialog, dialogue);
-          dialogue = {type: (token.dual ? "dual" : '')};
+			character = {type: "unkown"};
+          scene = pushToArray(scene, dialogue);
+          dialogue = {type: (token.dual ? "dialogue-dual" : 'dialogue-single')};
 		  break;
         case 'character':
           dialogue.characters = pushToArray(dialogue.characters, character);
           character = {type: "character", name: token.text};
 		  break;
 		case 'parenthetical':
-          character.dialogue = pushToArray(character.dialogue, {type: "parenthetical", text: token.text});
+          character.lines = pushToArray(character.lines, {type: "parenthetical", text: token.text});
 		  break;
 		case 'dialogue':
-          character.dialogue = pushToArray(character.dialogue, {type: "dialogue", text: token.text});
+          character.lines = pushToArray(character.lines, {type: "line", text: token.text});
 		  break;
 		case 'dialogue_end':
 		case 'dual_dialogue_end':
           dialogue.characters = pushToArray(dialogue.characters, character);
-          scene.dialogue = pushToArray(scene.dialog, dialogue);
-          dialogue = {};
+          scene = pushToArray(scene, dialogue);
+          dialogue = {type: "dialogue-single"};
 		  break;
 
 		case 'section':
-          scene.sections = pushToArray(scene.sections, token.text);
-		  html.push('<p class=\"section\" data-depth=\"' + token.depth + '\">' + token.text + '</p>');
+          scene = pushToArray(scene, {type: "section", name: token.text});
 		  break;
 		case 'synopsis':
-          scene.synopses = pushToArray(scene.synopses, token.text);
-		  html.push('<p class=\"synopsis\">' + token.text + '</p>');
+          scene = pushToArray(scene, {type: "synopsis", text: token.text});
 		  break;
 
 		case 'note':
@@ -333,7 +333,7 @@
 
 		case 'action':
         case 'centered':
-          scene.actions = pushToArray(scene.actions, token.text);
+          scene.actions = pushToArray(scene.actions, {type: "action", text: token.text});
 		  break;
 
 		case 'page_break':
@@ -346,7 +346,7 @@
 
     //ensure we track any dangling state:
     dialogue.characters = pushToArray(dialogue.characters, character);
-    scene.dialogue = pushToArray(scene.dialog, dialogue);
+    scene = pushToArray(scene, dialogue);
     output.script.scenes = pushToArray(output.script.scenes, scene);
 
 	if (typeof callback === 'function') {
