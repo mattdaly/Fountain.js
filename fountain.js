@@ -233,7 +233,7 @@
 	  , title, output = {};
 
 	output.title_page = {};
-	output.script = []; //script is an array of scenes
+	output.script = {}; //script is an array of scenes
 
 	output.tokens = toks ? tokens.reverse() : undefined;
 
@@ -347,7 +347,7 @@
     //ensure we track any dangling state:
     dialogue.characters = pushToArray(dialogue.characters, character);
     scene.dialogue = pushToArray(scene.dialog, dialogue);
-    output.script = pushToArray(output.script, scene);
+    output.script.scenes = pushToArray(output.script.scenes, scene);
 
 	if (typeof callback === 'function') {
 	  return callback(output);
