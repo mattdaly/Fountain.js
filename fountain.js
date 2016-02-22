@@ -333,7 +333,7 @@
 
 		case 'action':
         case 'centered':
-          scene.actions = pushToArray(scene.actions, {type: "action", text: token.text});
+          scene = pushToArray(scene, {type: "action", text: token.text});
 		  break;
 
 		case 'page_break':
