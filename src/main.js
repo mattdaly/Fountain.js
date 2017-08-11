@@ -235,7 +235,7 @@ inline.lexer = function(s) {
     .replace(regex.note_inline, inline.note)
     .replace(/\\\*/g, '[star]')
     .replace(/\\_/g, '[underline]')
-    .replace(/\n/g, inline.line_break)
+    .replace(/  \n/g, inline.line_break)
 
   // if (regex.emphasis.test(s)) {                         // this was causing only every other occurence of an emphasis syntax to be parsed
   while (i--) {
