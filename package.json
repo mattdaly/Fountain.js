@@ -1,5 +1,5 @@
 {
-  "name": "@tibas.london/fountain-parser",
+  "name": "@tibas.london/fountain",
   "version": "0.1.0",
   "main": "dist/fountain.cjs.js",
   "module": "dist/fountain.esm.js",
